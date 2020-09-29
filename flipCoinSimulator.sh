@@ -7,6 +7,18 @@ function getCoinFace(){
 		echo "Tails"
 	fi
 }
-toss=$((1+$RANDOM%2))
-winner=(`getCoinFace $toss`)
-echo "Winner: $winner"
+heads=0
+tails=0
+for i in `seq 1 10`
+do
+	toss=$((1+$RANDOM%2))
+	winner=(`getCoinFace $toss`)
+	if [ $winner = "Heads" ]
+	then
+		((heads++))
+	else
+		((tails++))
+	fi
+done
+echo "Heads: $heads"
+echo "Tails: $tails"
